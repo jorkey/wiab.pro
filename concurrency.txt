@@ -1,0 +1,65 @@
+socket (1344255471.735): Sending JSON data {"sequenceNumber":177,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/conv+root","2":{"1":{"1":3827,"2":"FA18475E83F9672A34822FA2D98D0EA8AEB02FC8"},"2":"test@localhost","3":[{"3":{"1":"b+65q76bzc9MA","2":{"1":[{"5":118},{"2":"о"},{"5":1}]}}}],"4":[]},"3":"ch7"}}
+socket (1344255471.748): received JSON message {"messageType":"ProtocolSubmitResponse","sequenceNumber":177,"message":{"1":1,"3":{"1":3828.0,"2":"6B03679B578357E469099B2D0EA007BBF511A1D4"}}}
+cc (1344255471.753): Fake version update op : version update op, blip id b+65q76bzc9MA blipVersion -1
+cc (1344255471.756): Processing server op : version update op, blip id b+65q76bzc9MA blipVersion -1
+cc (1344255471.760): Nothing to send
+cc (1344255471.769): Sending delta to server with last known server version 3828:awNnm1eDV+RpCZstDqAHu/URodQ=: CoreWaveletDelta(test@localhost, 3828:awNnm1eDV+RpCZstDqAHu/URodQ=, 1 ops: [document op: Buffered@770[|| { "usea/d/65qaaaaaaa": "aaaa@aaaaaaaaaaaaaaaaaaaaaaaa" -> "aaaa@aaaaaaaaaaaaaaaaaaaaaaaa" }; __120; || { "usea/d/65qaaaaaaa" }; ] on blip b+65q76bzc9MA by test@localhost at Mon Aug 06 18:17:51 GMT+600 2012 version null isWorthy false])
+socket (1344255471.773): Sending JSON data {"sequenceNumber":178,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/conv+root","2":{"1":{"1":3828,"2":"6B03679B578357E469099B2D0EA007BBF511A1D4"},"2":"test@localhost","3":[{"3":{"1":"b+65q76bzc9MA","2":{"1":[{"1":{"2":[],"3":[{"1":"user/d/65q76bzc9M","2":"test@localhost,1344255470703,","3":"test@localhost,1344255471764,"}]}},{"5":120},{"1":{"2":["user/d/65q76bzc9M"],"3":[]}}]}}}],"4":[]},"3":"ch7"}}
+socket (1344255471.793): received JSON message {"messageType":"ProtocolSubmitResponse","sequenceNumber":178,"message":{"1":1,"3":{"1":3829.0,"2":"7F80A1BC63BE256B2547A4509EA7677FEAF91DFD"}}}
+cc (1344255471.797): Fake version update op : version update op, blip id null blipVersion -1
+cc (1344255471.800): Processing server op : version update op, blip id null blipVersion -1
+cc (1344255471.803): Nothing to send
+cc (1344255473.149): Sending delta to server with last known server version 3829:f4ChvGO+JWslR6RQnqdnf+r5Hf0=: CoreWaveletDelta(test@localhost, 3829:f4ChvGO+JWslR6RQnqdnf+r5Hf0=, 1 ops: [document op: Buffered@771[__119; ++"Я"; __1; ] on blip b+65q76bzc9MA by test@localhost at Mon Aug 06 18:17:53 GMT+600 2012 version null isWorthy true])
+socket (1344255473.152): Sending JSON data {"sequenceNumber":179,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/conv+root","2":{"1":{"1":3829,"2":"7F80A1BC63BE256B2547A4509EA7677FEAF91DFD"},"2":"test@localhost","3":[{"3":{"1":"b+65q76bzc9MA","2":{"1":[{"5":119},{"2":"о"},{"5":1}]}}}],"4":[]},"3":"ch7"}}
+socket (1344255473.165): received JSON message {"messageType":"ProtocolSubmitResponse","sequenceNumber":179,"message":{"1":1,"3":{"1":3830.0,"2":"2B014BCBFBBB779F87ECB7AED6A94646DE2288EB"}}}
+cc (1344255473.169): Fake version update op : version update op, blip id b+65q76bzc9MA blipVersion -1
+cc (1344255473.172): Processing server op : version update op, blip id b+65q76bzc9MA blipVersion -1
+cc (1344255473.176): Nothing to send
+cc (1344255473.183): Sending delta to server with last known server version 3830:KwFLy/u7d5+H7Leu1qlGRt4iiOs=: CoreWaveletDelta(test@localhost, 3830:KwFLy/u7d5+H7Leu1qlGRt4iiOs=, 1 ops: [document op: Buffered@774[|| { "usea/d/65qaaaaaaa": "aaaa@aaaaaaaaaaaaaaaaaaaaaaaa" -> "aaaa@aaaaaaaaaaaaaaaaaaaaaaaa" }; __121; || { "usea/d/65qaaaaaaa" }; ] on blip b+65q76bzc9MA by test@localhost at Mon Aug 06 18:17:53 GMT+600 2012 version null isWorthy false])
+socket (1344255473.187): Sending JSON data {"sequenceNumber":180,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/conv+root","2":{"1":{"1":3830,"2":"2B014BCBFBBB779F87ECB7AED6A94646DE2288EB"},"2":"test@localhost","3":[{"3":{"1":"b+65q76bzc9MA","2":{"1":[{"1":{"2":[],"3":[{"1":"user/d/65q76bzc9M","2":"test@localhost,1344255471764,","3":"test@localhost,1344255473181,"}]}},{"5":121},{"1":{"2":["user/d/65q76bzc9M"],"3":[]}}]}}}],"4":[]},"3":"ch7"}}
+socket (1344255473.207): received JSON message {"messageType":"ProtocolSubmitResponse","sequenceNumber":180,"message":{"1":1,"3":{"1":3831.0,"2":"A8A70DDA0113696A55E0FFDC0020830290091C7D"}}}
+cc (1344255473.211): Fake version update op : version update op, blip id null blipVersion -1
+cc (1344255473.214): Processing server op : version update op, blip id null blipVersion -1
+cc (1344255473.217): Nothing to send
+cc (1344255475.843): Sending delta to server with last known server version 130:9NqCizVR0JbRbVaY6yUSyUbD7tI=: CoreWaveletDelta(test@localhost, 130:9NqCizVR0JbRbVaY6yUSyUbD7tI=, 1 ops: [document op: Buffered@776[__1; x< blip { i="b+6aaaaaaaaaa", v="378a" }; x>; __51; ] on blip m/read by test@localhost at Mon Aug 06 18:17:55 GMT+600 2012 version null isWorthy true])
+socket (1344255475.848): Sending JSON data {"sequenceNumber":181,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/user+test@localhost","2":{"1":{"1":130,"2":"F4DA828B3551D096D16D5698EB2512C946C3EED2"},"2":"test@localhost","3":[{"3":{"1":"m/read","2":{"1":[{"5":1},{"7":{"1":"blip","2":[{"1":"i","2":"b+65q76bzc9MA"},{"1":"v","2":"3789"}]}},{"8":true},{"5":51}]}}}],"4":[]},"3":"ch7"}}
+cc (1344255475.853): Unacknowledged delta, expected to be applied at version : 130
+socket (1344255475.865): received JSON message {"messageType":"ProtocolSubmitResponse","sequenceNumber":181,"message":{"1":1,"3":{"1":131.0,"2":"CD5930041AE790BEAF43076E86EB3CAD36288DCE"}}}
+cc (1344255475.869): Fake version update op : version update op, blip id m/read blipVersion -1
+cc (1344255475.872): Processing server op : version update op, blip id m/read blipVersion -1
+cc (1344255475.876): Sending delta to server with last known server version 131:zVkwBBrnkL6vQwduhus8rTYojc4=: CoreWaveletDelta(test@localhost, 131:zVkwBBrnkL6vQwduhus8rTYojc4=, 1 ops: [document op: Buffered@777[__1; << blip { i="b+6aaaaaaaaaa", v="383a" }; >>; __51; ] on blip m/read by test@localhost at Mon Aug 06 18:17:55 GMT+600 2012 version null isWorthy true])
+socket (1344255475.879): Sending JSON data {"sequenceNumber":182,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/user+test@localhost","2":{"1":{"1":131,"2":"CD5930041AE790BEAF43076E86EB3CAD36288DCE"},"2":"test@localhost","3":[{"3":{"1":"m/read","2":{"1":[{"5":1},{"3":{"1":"blip","2":[{"1":"i","2":"b+65q76bzc9MA"},{"1":"v","2":"3831"}]}},{"4":true},{"5":51}]}}}],"4":[]},"3":"ch7"}}
+socket (1344255475.882): received JSON message {"messageType":"ProtocolUpdate","sequenceNumber":1,"message":{"1":"localhost/w+ja7dPFpB62A/~/user+test@localhost","2":[],"3":{"1":131.0,"2":"CD5930041AE790BEAF43076E86EB3CAD36288DCE"},"7":"ch7"}}
+cc (1344255475.886): onCommit: version =131 serverpathsize =0 any unacknowledged ? true
+socket (1344255475.897): received JSON message {"messageType":"ProtocolSubmitResponse","sequenceNumber":182,"message":{"1":1,"3":{"1":132.0,"2":"45B8EDB513F1EA9AA4834751F8C1B12F8E5E95BB"}}}
+cc (1344255475.903): Fake version update op : version update op, blip id m/read blipVersion -1
+cc (1344255475.907): Processing server op : version update op, blip id m/read blipVersion -1
+cc (1344255475.909): Nothing to send
+socket (1344255475.912): received JSON message {"messageType":"ProtocolUpdate","sequenceNumber":1,"message":{"1":"localhost/w+ja7dPFpB62A/~/user+test@localhost","2":[],"3":{"1":132.0,"2":"45B8EDB513F1EA9AA4834751F8C1B12F8E5E95BB"},"7":"ch7"}}
+cc (1344255475.915): onCommit: version =132 serverpathsize =0 any unacknowledged ? false
+cc (1344255488.615): Sending delta to server with last known server version 3831:qKcN2gETaWpV4P/cACCDApAJHH0=: CoreWaveletDelta(test@localhost, 3831:qKcN2gETaWpV4P/cACCDApAJHH0=, 1 ops: [document op: Buffered@77b[__120; ++"Я"; __1; ] on blip b+65q76bzc9MA by test@localhost at Mon Aug 06 18:18:08 GMT+600 2012 version null isWorthy true])
+socket (1344255488.619): Sending JSON data {"sequenceNumber":183,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/conv+root","2":{"1":{"1":3831,"2":"A8A70DDA0113696A55E0FFDC0020830290091C7D"},"2":"test@localhost","3":[{"3":{"1":"b+65q76bzc9MA","2":{"1":[{"5":120},{"2":"р"},{"5":1}]}}}],"4":[]},"3":"ch7"}}
+socket (1344255488.645): received JSON message {"messageType":"ProtocolSubmitResponse","sequenceNumber":183,"message":{"1":1,"3":{"1":3832.0,"2":"1238D72726F2BDC8369357BA57327A28BB7A7FA3"}}}
+cc (1344255488.649): Fake version update op : version update op, blip id b+65q76bzc9MA blipVersion -1
+cc (1344255488.652): Processing server op : version update op, blip id b+65q76bzc9MA blipVersion -1
+cc (1344255488.656): Nothing to send
+
+cc (1344255488.664): Sending delta to server with last known server version 3832:EjjXJybyvcg2k1e6VzJ6KLt6f6M=: CoreWaveletDelta(test@localhost, 3832:EjjXJybyvcg2k1e6VzJ6KLt6f6M=, 1 ops: [document op: Buffered@77e[|| { "usea/d/65qaaaaaaa": "aaaa@aaaaaaaaaaaaaaaaaaaaaaaa" -> "aaaa@aaaaaaaaaaaaaaaaaaaaaaaa" }; __122; || { "usea/d/65qaaaaaaa" }; ] on blip b+65q76bzc9MA by test@localhost at Mon Aug 06 18:18:08 GMT+600 2012 version null isWorthy false])
+socket (1344255488.667): Sending JSON data {"sequenceNumber":184,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/conv+root","2":{"1":{"1":3832,"2":"1238D72726F2BDC8369357BA57327A28BB7A7FA3"},"2":"test@localhost","3":[{"3":{"1":"b+65q76bzc9MA","2":{"1":[{"1":{"2":[],"3":[{"1":"user/d/65q76bzc9M","2":"test@localhost,1344255473181,","3":"test@localhost,1344255488661,"}]}},{"5":122},{"1":{"2":["user/d/65q76bzc9M"],"3":[]}}]}}}],"4":[]},"3":"ch7"}}
+
+socket (1344255488.705): received JSON message {"messageType":"ProtocolSubmitResponse","sequenceNumber":184,"message":{"1":1,"3":{"1":3833.0,"2":"C1BB1E6EF5866A9FBEC1D5735C26E4AB8F81DC91"}}}
+cc (1344255488.709): Fake version update op : version update op, blip id null blipVersion -1
+cc (1344255488.712): Processing server op : version update op, blip id null blipVersion -1
+cc (1344255488.715): Nothing to send
+
+cc (1344255599.976): Sending delta to server with last known server version 3833:wbsebvWGap++wdVzXCbkq4+B3JE=: CoreWaveletDelta(test@localhost, 3833:wbsebvWGap++wdVzXCbkq4+B3JE=, 1 ops: [document op: Buffered@784[__121; << reply { id="b+6aaaaaaaaaa" }; >>; __1; ] on blip b+65q76bzc9MA by test@localhost at Mon Aug 06 18:19:59 GMT+600 2012 version null isWorthy false])
+socket (1344255599.979): Sending JSON data {"sequenceNumber":187,"messageType":"ProtocolSubmitRequest","message":{"1":"localhost/w+ja7dPFpB62A/~/conv+root","2":{"1":{"1":3833,"2":"C1BB1E6EF5866A9FBEC1D5735C26E4AB8F81DC91"},"2":"test@localhost","3":[{"3":{"1":"b+65q76bzc9MA","2":{"1":[{"5":121},{"3":{"1":"reply","2":[{"1":"id","2":"b+65q76bzc9MB"}]}},{"4":true},{"5":1}]}}}],"4":[]},"3":"ch7"}}
+
+cc (1344255599.995): Unacknowledged delta, expected to be applied at version : 3833
+cc (1344255600.007): Unacknowledged delta, expected to be applied at version : 3833
+cc (1344255600.023): Unacknowledged delta, expected to be applied at version : 3833
+cc (1344255600.038): Unacknowledged delta, expected to be applied at version : 3833
+
+socket (1344255660.023): received JSON message {"messageType":"RpcFinished","sequenceNumber":187,"message":{"1":true,"2":"java.lang.IllegalArgumentException: Start version 3833:wbsebvWGap++wdVzXCbkq4+B3JE= should be smaller than end version 3784:bDe/GHL2h07RlAAjGlWpNGAiM+Y="}}
+
+

@@ -1,0 +1,16 @@
+
+<div class='blip' id={0}>
+  <div class='meta' id='meta'>
+    <img class='avatar' src={1} alt={2}>
+      <div class='metabar read' onclick='toggleRead(this); return true;'>
+        <div class='options'>
+          <span class='time'>{3}</span>|<span class='reply'>Link</span>
+        </div>
+        <div class='metaline'>{4}</div>
+      </div>
+      <div class='contentContainer'>
+        <div class='document' contentEditable='false'>
+          <div>{5}</div>
+        </div>
+      </div>
+  </div>

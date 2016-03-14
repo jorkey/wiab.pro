@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.java.j2seproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+            <name>Wiab.pro</name>
+            <source-roots>
+                <root id="src.flags.dir"/>
+                <root id="src.gxp.dir"/>
+                <root id="src.messages.dir"/>
+                <root id="src.proto_src.dir"/>
+                <root id="src.dir"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.test.dir"/>
+            </test-roots>
+        </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>Accessor</word>
+            <word>acknowledgement</word>
+            <word>acknowledgements</word>
+            <word>anchor's</word>
+            <word>animation's</word>
+            <word>annotation's</word>
+            <word>appends'</word>
+            <word>arg</word>
+            <word>avatars</word>
+            <word>behaviour</word>
+            <word>behaviours</word>
+            <word>channel's</word>
+            <word>conv</word>
+            <word>danilatos</word>
+            <word>deserialization</word>
+            <word>deserialized</word>
+            <word>Deserializes</word>
+            <word>deserializing</word>
+            <word>diff</word>
+            <word>diffs</word>
+            <word>doodads</word>
+            <word>enum</word>
+            <word>fibonacci</word>
+            <word>Focusables</word>
+            <word>fuzzing</word>
+            <word>google</word>
+            <word>inbox</word>
+            <word>Initially</word>
+            <word>inline</word>
+            <word>Inteprets</word>
+            <word>listener's</word>
+            <word>Metadata</word>
+            <word>mtsui</word>
+            <word>mux</word>
+            <word>namespace</word>
+            <word>nindo</word>
+            <word>nindos</word>
+            <word>nullable</word>
+            <word>operation's</word>
+            <word>operationalizer</word>
+            <word>outdent</word>
+            <word>panel's</word>
+            <word>participants'</word>
+            <word>patcoleman</word>
+            <word>pojo</word>
+            <word>popup</word>
+            <word>registry's</word>
+            <word>scrollable</word>
+            <word>scroller</word>
+            <word>Serializer</word>
+            <word>service's</word>
+            <word>snippets</word>
+            <word>sourced</word>
+            <word>sourcing</word>
+            <word>stacklet</word>
+            <word>stacklets</word>
+            <word>stylings</word>
+            <word>subclassable</word>
+            <word>target's</word>
+            <word>thread's</word>
+            <word>toolbar</word>
+            <word>Undercurrent's</word>
+            <word>unstyled</word>
+            <word>upgrader</word>
+            <word>validator</word>
+            <word>view's</word>
+            <word>wave's</word>
+            <word>wavelet's</word>
+        </spellchecker-wordlist>
+    </configuration>
+</project>

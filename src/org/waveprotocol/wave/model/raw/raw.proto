@@ -1,0 +1,111 @@
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// Author: akaplanov@gmail.com (Andrew Kaplanov)
+
+syntax = "proto2";
+
+import "org/waveprotocol/wave/federation/federation.protodevel";
+
+package protoblockstore;
+
+option java_package = "org.waveprotocol.wave.model.raw";
+option java_outer_classname = "Raw";
+
+message ProtoWaveletOperation {
+  // Adds a new segment to the wavelet.
+  optional string addSegment = 1;
+
+  // Removes an existing segment from the wavelet.
+  optional string removeSegment = 2;
+
+  // Starts modifying segment.
+  optional string startModifyingSegment = 3;
+
+  // Ends modifying segment.
+  optional string endModifyingSegment = 4;
+
+  // Adds a new participant (canonicalized wave address) to the wavelet.
+  optional string addParticipant = 5;
+
+  // Removes an existing participant (canonicalized wave address) from the wavelet.
+  optional string removeParticipant = 6;
+
+  // Adds document contributor.
+  optional bool addDocumentContributor = 7;
+
+  // Removes document contributor.
+  optional bool removeDocumentContributor = 8;
+
+  // A document operation. Mutates the contents of the specified document.
+  optional federation.ProtocolDocumentOperation documentOperation = 9;
+
+  // Does nothing. True if set.
+  optional bool noOp = 10;
+}
+
+message ProtoWaveletOperations {
+  // Array of operations.
+  repeated ProtoWaveletOperation operation = 1;
+}
+
+message ProtoSegmentIndexSnapshot {
+  message SegmentInfo {
+    // Segment Id.
+    required string segmentId = 1;
+    // Creation time of segment.
+    required uint64 creationTime = 2;
+    // Last modification version of segment.
+    required uint64 lastModificationVersion = 3;
+    // Segment is removed.
+    optional bool removed = 4;
+  }
+  // Wavelet creation time.
+  optional uint64 creationTime = 1;
+  // Wavelet segment infos.
+  repeated SegmentInfo segments = 2;
+  // Being modified segments.
+  repeated string beingModifiedSegments = 3;
+  // Last modified segment Id.
+  optional string lastModifiedSegmentId = 4;
+}
+
+message ProtoParticipantsSnapshot {
+  // Wavelet creator.
+  required string creator = 1;
+  // Wavelet participants.
+  repeated string participants = 2;
+}
+
+message ProtoDocumentSnapshot {
+  // Operation that transforms an empty document the document state.
+  required federation.ProtocolDocumentOperation documentSnapshot = 1;
+}
+
+message ProtoBlipSnapshot {
+  // Raw snapshot of document.
+  required string rawDocumentSnapshot = 1;
+
+  //// Metadata ////
+  // Participant who submitted the first operation to the document.
+  required string author = 2;
+  // All participants who have submitted operations to the document.
+  repeated string contributor = 3;
+  // Creation time
+  required uint64 creationTime = 4;
+  // Creation version
+  required uint64 creationVersion = 5;
+  // Last modified time
+  required uint64 lastModifiedTime = 6;
+  // Last modified version
+  required uint64 lastModifiedVersion = 7;
+}

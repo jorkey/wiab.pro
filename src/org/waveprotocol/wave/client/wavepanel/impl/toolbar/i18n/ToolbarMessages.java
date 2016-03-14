@@ -1,0 +1,72 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+package org.waveprotocol.wave.client.wavepanel.impl.toolbar.i18n;
+
+import com.google.gwt.i18n.client.Messages;
+import com.google.gwt.i18n.client.Messages.DefaultMessage;
+
+/**
+ *
+ * @author akaplanov (Andrew Kaplanov)
+ */
+public interface ToolbarMessages extends Messages {
+  @DefaultMessage("Recent")
+  String recent();
+
+  @DefaultMessage("The most recently edited message")
+  String recentHint();
+
+  @DefaultMessage("Next Unread")
+  String nextUnread();
+
+  @DefaultMessage("Go to the next unread message")
+  String nextUnreadHint();
+
+  @DefaultMessage("Previous")
+  String previous();
+
+  @DefaultMessage("Go to the previous message")
+  String previousHint();
+
+  @DefaultMessage("Next")
+  String next();
+
+  @DefaultMessage("Go to the next message")
+  String nextHint();
+
+  @DefaultMessage("To Archive")
+  String toArchive();
+
+  @DefaultMessage("Move the wave to archive")
+  String toArchiveHint();
+
+  @DefaultMessage("To Inbox")
+  String toInbox();
+
+  @DefaultMessage("Move the wave to inbox")
+  String toInboxHint();
+
+  @DefaultMessage("Read All")
+  String readAll();
+
+  @DefaultMessage("Mark all messages in the wave as read")
+  String readAllHint();
+
+}

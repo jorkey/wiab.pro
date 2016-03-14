@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2014 fwnd80@gmail.com (Nikolay Liber).
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:with field="res" type="org.waveprotocol.wave.client.wavepanel.view.impl.DraftModeControlsWidget.Resources"/>
+  <ui:with field="msg" type="org.waveprotocol.wave.client.wavepanel.view.dom.full.i18n.DraftModeControlsMessages"/>
+  
+  <g:FlowPanel>
+    <g:CheckBox ui:field="draftMode" styleName="{res.css.checkbox}" text="{msg.draft}"/>
+    <g:SimplePanel ui:field="donePanel" styleName="{res.css.doneButton}"/>
+    <g:SimplePanel ui:field="cancelPanel"/>
+  </g:FlowPanel>
+</ui:UiBinder>

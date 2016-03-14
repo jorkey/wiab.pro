@@ -1,0 +1,88 @@
+
+/**
+* See Participants.css
+*/
+
+.panel {
+  border-top: 1px solid #B8C6D9;
+  border-left: 1px solid #E4F1FE;
+  background-color: #C9E2FC;
+  overflow: hidden;
+  min-width: 50px;
+  bottom: -4px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 36px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.flow {
+  overflow: auto;
+  position: relative;
+  padding-right: 4.5em;
+}
+
+.tag {
+  float: left;
+  cursor: pointer;
+  line-height: 28px;
+  margin: 4px 0 0 8px;
+  text-decoration: underline;
+  color: blue;
+}
+
+.title {
+  float: left;
+  line-height: 28px;
+  margin: 4px 0 0 8px;
+}
+
+.toggleGroup {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.simple {
+  position: absolute;
+  padding: 8px 0 4px 4px;
+  background-color: #c9e2fc;
+  bottom: 0;
+  width: 4em;
+}
+
+.extra {
+  position: absolute;
+  width: 5em;
+  margin-left: 4px;
+  padding-top: 13px;
+}
+
+@sprite .expandButton {
+  gwt-image: 'expandButton';
+  display: inline-block;
+  margin-right: 0.3em;
+}
+
+@sprite .collapseButton {
+  gwt-image: 'collapseButton';
+  display: inline-block;
+  margin-right: 0.3em;
+}
+
+@sprite .addButton {
+  gwt-image: 'addButton';
+  display: block;
+  cursor: pointer;
+}
+
+@sprite .deleteButton {
+  gwt-image: 'deleteButton';
+  position: absolute;
+  top: -3px;
+  right: -10px;
+}
+

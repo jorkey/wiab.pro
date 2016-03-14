@@ -1,0 +1,327 @@
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+
+  GXP template for the user authentication (login) page.
+  Generate "ant gen_gxp".
+  Author: gentle@google.com (Joseph Gentle)
+-->
+
+<gxp:template name='org.waveprotocol.box.server.gxp.AuthenticationPage'
+  xmlns='http://www.w3.org/1999/xhtml'
+  xmlns:expr='http://google.com/2001/gxp/expressions'
+  xmlns:call='http://google.com/2001/gxp/call'
+  xmlns:gxp='http://google.com/2001/gxp'>
+
+  <gxp:param name='domain' type='String' />
+  <gxp:param name='message' type='String' />
+  <gxp:param name='responseType' type='String' />
+  <gxp:param name='disableLoginPage' type='Boolean' />
+  <gxp:param name='analyticsAccount' type='String'/>
+
+  <html dir="ltr">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link type="text/css" rel="stylesheet" href="/static/auth.css" />
+  <link type="text/css" rel="buttons stylesheet" href="/static/auth-buttons.css" />
+  <link rel="shortcut icon" href="/static/favicon.ico" />
+  <title>Wave in a Box login</title>
+  <call:AnalyticsFragment expr:account='analyticsAccount'/>
+  <meta name="google-site-verification" content="GMJfIe-gJytjZawOAoKL_zW8LdEGlryA4Z7aAzCRh60" />
+  </head>
+  <body onload="init()">
+  <table width="100%" border="0" align="center" cellpadding="0"
+    cellspacing="0" style="margin-top: 15px">
+    <tr>
+      <td valign="top" style="padding-left: 20px; padding-right: 10px">
+      <img src="/static/logo.png" border="0" width="45px" height="30"
+        align="left" vspace="10" alt='Wave in a Box logo' /></td>
+      <td width="95%" bgcolor="#ffffff">
+      <table width="100%" align="right" cellspacing="0" dir="ltr">
+        <tr>
+          <td class="bubble"
+            style='font-family: arial; text-align: left; font-weight: bold; padding-right: 10px;'
+            dir="ltr"><b>Welcome to Wiab Professional</b>
+          </td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+  </table>
+  <table border="0" width="100%" cellpadding="1" cellspacing="1"
+    style="margin-top: 10px;">
+    <tr>
+      <td valign="top">
+      <table>
+        <td>
+        <div style="margin: 0 75px 0 25px;">
+          <span style="font-weight: bold; font-size: larger">
+           Wiab Professional improves <a
+                style="color: #0066cc;"
+                href="http://incubator.apache.org/wave/">Apache Wave</a>:
+          </span>
+          <p>
+            <b>Supports the following new features:</b>
+            <p style="width: 60%;">
+              <ul>
+                <li>
+                  <a style="color: #0066cc;" href="http://www.waveprotocol.org/protocol/design-proposals/clientserver-protocol">New client/server protocol</a>
+                  with own improvements:
+                  <ul>
+                    <li>
+                      Separate opening of wavelets;
+                    </li>
+                    <li>
+                      Fully supported simultaneous editing of wave by multiple users;
+                    </li>
+                    <li>
+                      Displaying external changes accumulated during the period before the wave re-opening;
+                    </li>
+                    <li>
+                      Reconnection anytime support;
+                    </li>
+                    <li>
+                      Error codes.
+                    </li>
+                    <li>
+                      Reliability and scalability.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Wave view improvements:
+                  <ul>
+                    <li>
+                      Google-style design;
+                    </li>
+                    <li>
+                      Displaying changes in set of participants and tags;
+                    </li>
+                    <li>
+                      Displaying deleted blips;
+                    </li>
+                    <li>
+                      Context menu by double click;
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Full-featured search:
+                  <ul>
+                    <li>
+                      Full text search;
+                    </li>
+                    <li>
+                      Search by tags;
+                    </li>
+                    <li>
+                      Custom searches list.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Other features:
+                  <ul>
+                    <li>
+                      Archiving;
+                    </li>
+                    <li>
+                      Tags;
+                    </li>
+                    <li>
+                      Contact management;
+                    </li>
+                    <li>
+                      Login with Google;
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </p>
+            <b>Improves safety, performance and scalability:</b>
+            <p style="width: 60%;">
+              <ul>
+                <li>
+                  Stores digest of waves in the index;
+                </li>
+                <li>
+                  Caches waves in the memory;
+                </li>
+                <li>
+                  Increases speed of the opening wave by storing the history of snapshots of the wave;
+                </li>
+                <li>
+                  Increases speed of wave update by deferred cumulative index calculation;
+                </li>
+                <li>
+                  Accelerated gadget initialization.
+                </li>
+              </ul>
+            </p>
+          </p>
+        </div>
+        </td>
+      </table>
+      </td>
+      <td valign="top" align="center" style="padding-right: 30px">
+      <gxp:if cond='disableLoginPage == true'>
+      HTTP Authentication disabled by Administrator. Install and use your certificate instead.
+      </gxp:if>
+      <gxp:if cond='disableLoginPage == false'>
+      <form id="wiab_loginform" action="" method="post">
+      <table class="form-noindent" style="padding: 1;" border="0"
+        align="right">
+        <tr>
+          <td valign="top" style="text-align: center" class="loginBox"
+            width="280px">
+          <table align="center" border="0" cellpadding="1"
+            cellspacing="0" style="margin: auto;">
+            <tr>
+              <td class="smallfont" colspan="2" align="center">Sign
+              in
+              <h2>Wave in a Box</h2>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" align="center"></td>
+            </tr>
+            <tr>
+              <td>
+              <div align="right"><span class="wiab le lbl">
+              Username: </span></div>
+              </td>
+              <td><input type="text" name="address" id="address"
+                size="22" value="" class='wiab le val' /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td align="right"
+                style="color: #444444; font-size: 75%; overflow: hidden; padding-top: 0px"
+                dir="ltr">@<gxp:eval expr='domain' /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td align="right"></td>
+            </tr>
+            <tr class="enabled">
+              <td align="right"><span class="wiab le lbl">
+              Password: </span></td>
+              <td><input type="password" name="password"
+                id="password" size="22" class="wiab le val" /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td align="center"
+                style="font-size: 75%; overflow: hidden;" width="40px"><label
+                id="messageLbl" style="display: none;"></label></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td align="left">
+                <table width="100%" border="0" cellpadding="1"
+                  cellspacing="0" style="margin: auto;">
+                <tr>
+                  <td>
+                    <input type="submit"
+                      class="wiab le button" name="signIn" id="signIn"
+                      value="Sign in" />
+                  </td>
+                  <td>
+                    <a style="font-size: 12px; float: right; color: #0066cc"
+                      href="/auth/change_password">Change password</a>
+                  </td>
+                </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table align="center" border="0" cellpadding="0"
+            cellspacing="0">
+            <tr>
+              <td colspan="2" height="20" align="center" valign="bottom">
+              <div
+                style="font-size: 12px; margin-left: 15px; margin-top: 5px; background-color: d3d4d6; text-align: center;">
+              Don't have a Wave in a Box @<gxp:eval expr='domain' />
+              account?</div>
+              <div style="padding-bottom: 10px"><span> <a
+                style="color: #0066cc; margin-left: 15px;"
+                href="/auth/register">Register a new account</a> </span></div>
+              <table style="margin-top: 5px;">
+                <tr>
+                  <td><span style="font-size: 14px; margin-right: 4px;">or</span></td>
+                  <td align="center"><a
+                    class="btn-auth btn-google"
+                    href="/auth/signin_google">Login with <b>Google</b></a></td>
+                </tr>
+              </table>
+              </td>
+            </tr>
+          </table>
+          </td>
+        </tr>
+      </table>
+      </form>
+      </gxp:if>
+      </td>
+    </tr>
+  </table>
+  <table width="100%" border="0" align="center" cellpadding="0"
+    cellspacing="0" style="margin-top: 10px">
+    <tr>
+      <td width="95%" bgcolor="#ffffff">
+      <table width="100%" align="right" cellspacing="0"
+        bgcolor="#C3D9FF" dir="ltr">
+        <tr>
+          <td class="bubble"
+            style='font-family: arial; text-align: left; font-weight: bold; padding-right: 10px;'
+            dir="ltr"></td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <br />
+  <script type="text/javascript">
+    var RESPONSE_STATUS_NONE = "NONE";
+    var RESPONSE_STATUS_FAILED = "FAILED";
+    var RESPONSE_STATUS_SUCCESS = "SUCCESS";
+
+    var message = <gxp:eval expr='message'/>;
+    var responseType = <gxp:eval expr='responseType'/>;
+
+    function init() {
+        setFocus();
+        handleResponse(responseType, message);
+    }
+
+    function setFocus() {
+        document.getElementById("address").focus();
+    }
+
+    function handleResponse(responseType, message) {
+        var messageLbl = document.getElementById("messageLbl");
+        if (responseType == RESPONSE_STATUS_NONE) {
+            messageLbl.style.display = "none";
+        } else if (responseType == RESPONSE_STATUS_FAILED) {
+            messageLbl.style.display = "inline";
+            messageLbl.style.color = "red";
+            messageLbl.innerHTML = message;
+        }
+    }
+  </script>
+  </body>
+  </html>
+</gxp:template>

@@ -1,0 +1,15 @@
+
+<div id={0} class='digest'>
+  <div class='inner'>
+    <div class='avatars'>{1}</div>
+    <div class='info'>
+      <div class='unread time'>{2}</div>
+      <div class='msgs'>
+        <span class='totalCount'>{3}</span>
+      </div>
+    </div>
+    <div class='text'>
+      <span class='unread title'><a href={6} target='content'>{5}</a></span> &mdash; <span class='snippet'><a href={6} target='content'>{7}</a></span>
+    </div>
+  </div>
+</div>

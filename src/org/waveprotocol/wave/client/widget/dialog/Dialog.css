@@ -1,0 +1,51 @@
+
+.errorLabel {
+  color: red;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
+
+.warningLabel {
+  color: red;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
+
+.infoLabel {
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
+
+.verticalPanel {
+  padding: 10px;
+  text-align: center;
+}
+
+.promptLabel {
+}
+
+.inputTextBox {
+  min-width: 250px;
+  width: 100%;
+}
+
+.dialogButtonPanel {
+  padding: 5px;
+}
+
+.dialogButton {
+  min-width: 80px;
+  margin: 5px;
+}
+
+.glassPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}

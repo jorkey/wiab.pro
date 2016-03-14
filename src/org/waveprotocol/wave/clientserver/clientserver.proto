@@ -1,0 +1,340 @@
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// The wave client-server protocol.
+// See http://www.waveprotocol.org/protocol/design-proposals/clientserver-protocol
+//
+// Author: anorth@google.com (Alex North)
+// Author: akaplanov@gmail.com (A. Kaplanov)
+
+syntax = "proto2";
+
+import "org/waveprotocol/wave/clientserver/rpc.proto";
+import "org/waveprotocol/wave/federation/federation.protodevel";
+
+package clientserver;
+
+option java_package = "org.waveprotocol.wave.clientserver";
+option java_outer_classname = "ClientServer";
+option java_generic_services = true;
+
+/**
+ * Fetch service.
+ * Provides snapshots describing a client's view of a wave.
+ */
+service FetchService {
+  rpc FetchWaveView(FetchWaveViewRequest) returns (FetchWaveViewResponse);
+  rpc FetchFragments(FetchFragmentsRequest) returns (FetchFragmentsResponse);
+}
+
+message FetchWaveViewRequest {
+  // Wave to open, URI path format.
+  required string waveId = 1;
+  // Wavelet id's by which to filter the view, empty means no filter.
+  repeated string waveletId = 2;
+  // Wavelet id prefixes by which to filter the view, empty means no filter.
+  repeated string waveletIdPrefix = 3;
+  // Minimum size of blips in the reply.
+  required int32 minBlipReplySize = 4;
+  // Maximum size of blips in the reply.
+  required int32 maxBlipReplySize = 5;
+  // Maximum count of blips in the reply.
+  required int32 maxBlipCount = 6;
+  // Open wavelet from last read state with diffs to current state.
+  optional bool fromLastRead = 7;
+}
+
+message FetchWaveViewResponse {
+  /** Fragment of wavelet. */
+  message WaveletFragment {
+    // The wavelet in view, URI path format.
+    required string waveletId = 1;
+
+    // Current version and modification timestamp of the wavelet.
+    required federation.ProtocolHashedVersion lastModifiedVersion = 2;
+    required int64 lastModifiedTime = 3;
+
+    // Fragments of the segments.
+    repeated SegmentFragment fragment = 4;
+  }
+
+  required ResponseStatus status = 1;
+
+  // Snapshots of segments with operations to last seen wavelet version or current wavelet version.
+  repeated WaveletFragment wavelet = 2;
+}
+
+message FetchFragmentsRequest {
+  /** Segment to load. */
+  message SegmentRequest {
+    // Segment id.
+    required string segmentId = 1;
+    // Start version of segment.
+    required int64 startVersion = 2;
+  }
+  // Wavelet name to fetch from, URI path format.
+  required string waveletName = 1;
+  // Segment's to load.
+  repeated SegmentRequest segment = 2;
+  // End version.
+  required int64 endVersion = 3;
+  // Minimum reply size.
+  required int32 minReplySize = 4;
+  // Maximum reply size.
+  required int32 maxReplySize = 5;
+}
+
+message FetchFragmentsResponse {
+  required ResponseStatus status = 1;
+
+  // Blips.
+  repeated SegmentFragment fragment = 2;
+}
+
+/** A fragment of segment. */
+message SegmentFragment {
+  // Segment's Id.
+  required string segmentId = 1;
+
+  // Segment's snapshot.
+  optional SegmentSnapshot segmentSnapshot = 2;
+
+  // Operations that transforms snapshot to the begining state.
+  repeated SegmentOperation adjustOperation = 3;
+
+  // Operations that transforms snapshot to the end state.
+  repeated SegmentOperation diffOperation = 4;
+}
+
+/** A snapshot of segment. */
+message SegmentSnapshot {
+  // Segment's snapshot.
+  required string rawSnapshot = 1;
+}
+
+/** A operation on segment. */
+message SegmentOperation {
+  // Raw ProtoWaveletOperations.
+  required string operations = 1;
+
+  // Author of operation.
+  optional string author = 3;
+
+  // Target version.
+  required int64 targetVersion = 4;
+
+  // Time of operation.
+  required int64 timestamp = 5;
+}
+
+/**
+ * Wavelet channel service.
+ * Provides a uni-directional stream of deltas for a single wavelet,
+ * beginning at the delta applying at a client-specified version.
+ * The stream continues until either the client requests the channel
+ * be closed or a terminating message is received. Deltas submitted
+ * with this channel's id are excluded from the stream. There is no
+ * ordering guarantee between this service and responses from the
+ * delta submission service.
+ */
+service WaveletChannelService {
+  rpc Open(OpenWaveletChannelRequest) returns (OpenWaveletChannelStream) {
+      option (rpc.is_streaming_rpc) = true;
+  };
+  rpc Close(CloseWaveletChannelRequest) returns (EmptyResponse);
+}
+
+message OpenWaveletChannelRequest {
+  // Wavelet name, URI path format.
+  required string waveletName = 1;
+  // Ids of segments uploaded on client.
+  repeated string segmentId = 2;
+  // Known versions from CC.
+  repeated federation.ProtocolHashedVersion knownVersion = 3;
+  // Unacknowldged delta.
+  optional federation.ProtocolWaveletDelta unacknowledgedDelta = 4;
+}
+
+/** Repeated message for a wavelet channels. */
+message OpenWaveletChannelStream {
+  // Channel id is provided only in the first message
+  optional string channelId = 1;
+
+  // Provided only in the first message.
+  message ChannelOpen {
+    // Start version.
+    required federation.ProtocolHashedVersion connectVersion = 1;
+
+    // Fragments of the segments.
+    repeated SegmentFragment fragment = 2;
+
+    // Current version and modification timestamp of the wavelet.
+    required federation.ProtocolHashedVersion lastModifiedVersion = 3;
+    required int64 lastModifiedTime = 4;
+
+    // For connection repairing. Version of unacknowledged delta found in deltas history.
+    optional federation.ProtocolHashedVersion unacknowledgedDeltaVersion = 5;
+  }
+  optional ChannelOpen channelOpen = 2;
+
+  // Second and subsequent messages contain either or both a deltas
+  // and commitVersion.
+
+  // A delta applied to a wavelet.
+  message WaveletUpdate {
+    // Transformed delta.
+    required federation.ProtocolWaveletDelta delta = 1;
+    // Wavelet hashed version after the delta.
+    required federation.ProtocolHashedVersion resultingVersion = 2;
+    // Timestamp of delta application.
+    required int64 applicationTimestamp = 3;
+  }
+  repeated WaveletUpdate delta = 3;
+
+  optional federation.ProtocolHashedVersion commitVersion = 4;
+
+  // Last message contains only a terminator.
+  optional WaveletChannelTerminator terminator = 5;
+}
+
+message CloseWaveletChannelRequest {
+  // Channels to close.
+  required string channelId = 1;
+}
+
+/** Terminates a wavelet stream. */
+message WaveletChannelTerminator {
+  required ResponseStatus status = 1;
+}
+
+/**
+ * Delta submission service.
+ * Receives deltas submitted against wavelets.
+ * Deltas are submitted in association with a wavelet channel (see
+ * WaveletChannelService).
+ */
+service DeltaSubmissionService {
+  rpc Submit(SubmitDeltaRequest) returns (SubmitDeltaResponse);
+}
+
+message SubmitDeltaRequest {
+  // Wavelet channel associated with submission.
+  required string channelId = 1;
+  // Delta to submit.
+  required federation.ProtocolWaveletDelta delta = 2;
+}
+
+message SubmitDeltaResponse {
+  required ResponseStatus status = 1;
+
+  // Number of ops applied from the delta.
+  optional int32 operationsApplied = 2;
+  // Wavelet hashed version after the delta.
+  optional federation.ProtocolHashedVersion hashedVersionAfterApplication = 3;
+  // Timestamp of delta application.
+  optional int64 timestampAfterApplication = 4;
+}
+
+/**
+ * Transport authentication service.
+ * Authenticates the underlying transport.
+ * This service is required only to work around a bug in some browsers'
+ * websocket implementations that fail to set cookies containing authentication
+ * tokens.
+ * If the client's authentication is invalid the server should close the
+ * transport.
+ * See: http://code.google.com/p/wave-protocol/issues/detail?id=119
+ */
+service TransportAuthenticationService {
+  rpc Authenticate (TransportAuthenticationRequest) returns (EmptyResponse);
+}
+
+message TransportAuthenticationRequest {
+  // Authentication token.
+  required string token = 1;
+}
+
+/** An empty message for services which have no application-level result. */
+message EmptyResponse {
+}
+
+/**
+ * Disconnect service.
+ * Request generates by server on websocket disconnect.
+ */
+service DisconnectService {
+  rpc Disconnect (DisconnectRequest) returns (EmptyResponse);
+}
+
+message DisconnectRequest {
+}
+
+/** Response status for all services */
+message ResponseStatus {
+  enum ResponseCode {
+  // All good.
+  OK = 0;
+
+  // Request was ill-formed.
+  BAD_REQUEST = 1;
+
+  // An unspecified internal error occurred.
+  INTERNAL_ERROR = 2;
+
+  // The request was not authorized.
+  NOT_AUTHORIZED = 3;
+
+  // Hashed version didn't match a point in history.
+  VERSION_ERROR = 4;
+
+  // A delta contained an invalid operation (before or after transformation).
+  INVALID_OPERATION = 5;
+
+  // An operation didn't preserve a document schema.
+  SCHEMA_VIOLATION = 6;
+
+  // A delta is too big or the resulting document count or size is too large.
+  SIZE_LIMIT_EXCEEDED = 7;
+
+  // An operation was rejected by a server policy.
+  POLICY_VIOLATION = 8;
+
+  // An object is unavailable because it has been quarantined.
+  QUARANTINED = 9;
+
+  // A request was made against a version older than the server was willing
+  // to satisfy. Transform and retry.
+  TOO_OLD = 10;
+
+  // Object not exists.
+  NOT_EXISTS = 11;
+
+  // Object already exists.
+  ALREADY_EXISTS = 12;
+
+  // User was not logged in.
+  NOT_LOGGED_IN = 13;
+
+  // User is unsubscribed.
+  UNSUBSCRIBED = 14;
+
+  // User is not participant.
+  NOT_PARTICIPANT = 15;
+
+  // Wave is being indexed.
+  INDEXING_IN_PROCESS = 16;
+  }
+
+  required ResponseCode code = 1;
+  // Reason must be provided if status != OK.
+  optional string failureReason = 2;
+}

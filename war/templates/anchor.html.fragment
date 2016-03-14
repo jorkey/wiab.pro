@@ -1,0 +1,8 @@
+<div class='anchor' id='anchor2'>
+                    <span class='toggle' c='expanded' r='read' onmousedown='return false;'
+                      onclick='toggle(this); return false;'><span class='arrow read expanded'></span><span
+                      class='read count expanded'>124
+                        <div class='dropContainer expanded'>
+                          <span class='drop'></span>
+                        </div> </span> </span>
+                    <div id='threadContents' class='chrome expanded'>

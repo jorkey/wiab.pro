@@ -1,0 +1,106 @@
+/* Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * CSS Stylesheet for the inline thread continuation indicator.
+ *
+ * author: michael.macfadden@gmail.com (Michael MacFadden)
+ */
+
+.indicator {
+  position: absolute;
+  height: 17px;
+  padding-left: 1em;
+}
+
+.indicatorVisible {
+  cursor: pointer;
+  z-index: 999999;
+}
+                     
+.indicatorInvisible {
+  cursor: default;
+  z-index: -999999;
+  display: none;
+}
+
+.button {
+  background-color: #EEE;
+  border: solid 2px #CCC;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  margin-left: 1em;
+  height: 15px;
+  min-width: 8em;
+}
+
+.button:hover {
+  border: solid 2px #5590D2;
+}
+
+.buttonVisible {
+  display: inline-block;
+}
+
+.buttonInvisible {
+  display: none;
+}
+
+@sprite .addIcon {
+  gwt-image: 'continuationAddIcon';
+  overflow: visible;
+  margin-left: 5px;
+  margin-top: 10px;
+  z-index: 2;
+  position: absolute;
+}
+
+@sprite .replyIcon {
+  gwt-image: 'continuationReplyIcon';
+  overflow: visible;
+  margin-left: 5px;
+  margin-top: 10px;
+  z-index: 2;
+  position: absolute;
+}
+
+.avatar {
+  overflow: visible;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 12px;
+  width: 17px;
+  height: 17px;
+  z-index: 2;
+  opacity: 0.8;
+}
+
+.text {
+  padding-left: 0.5em;
+  color: gray;
+  position: absolute;
+  top: 1px;
+  margin-left: 15px;
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 7px;
+  bottom: 7px;
+  background-color: #5590D2;
+}
+
+.lineInvisible {
+  display: none;
+}

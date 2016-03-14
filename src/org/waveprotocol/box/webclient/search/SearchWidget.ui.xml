@@ -1,0 +1,17 @@
+<!-- Template for SearchWidget. Author: hearnden@google.com (David Hearnden) -->
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+  xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:with
+    field="css" type="org.waveprotocol.box.webclient.search.SearchWidget.Css" />
+  <ui:with
+    field="msg" type="org.waveprotocol.box.webclient.search.i18n.SearchWidgetMessages" />
+  <g:HTMLPanel styleName='{css.self}'>
+   <div class='{css.search}'>
+     <g:SimplePanel ui:field='newWaveButtonPanel' styleName='{css.newWaveButton}'/>       
+     <div class='{css.searchBoxContainer}'>
+      <g:TextBox ui:field='queryTextBox' styleName='{css.query}'/>
+     </div>       
+   </div>
+  </g:HTMLPanel>
+</ui:UiBinder>

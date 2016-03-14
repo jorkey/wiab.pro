@@ -1,0 +1,19 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g='urn:import:com.google.gwt.user.client.ui'
+  xmlns:w="urn:import:org.waveprotocol.wave.client.widget.common">
+  <ui:with field='css'
+    type='org.waveprotocol.box.webclient.search.SearchesItemEditorPopup.Css' />
+  <ui:with field='msg'
+    type='org.waveprotocol.box.webclient.search.i18n.SearchesItemEditorMessages' />
+  <g:HTMLPanel styleName="{css.self}">
+    <g:VerticalPanel>
+      <g:Label ui:field="nameLabel" styleName="{css.label}">
+        <ui:text from="{msg.name}"/>
+      </g:Label>
+      <g:TextBox ui:field="nameTextBox" styleName="{css.nameTextBox}"></g:TextBox>
+      <g:Label ui:field="queryLabel" styleName="{css.label}">
+        <ui:text from="{msg.query}"/>
+      </g:Label>
+      <g:TextBox ui:field="queryTextBox" styleName="{css.queryTextBox}"></g:TextBox>
+    </g:VerticalPanel>
+  </g:HTMLPanel>
+</ui:UiBinder>

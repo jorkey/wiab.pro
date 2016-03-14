@@ -1,0 +1,52 @@
+/**
+ * Copyright 2010 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+package org.waveprotocol.box.server.rpc.render.renderer;
+
+import org.waveprotocol.wave.model.conversation.Conversation;
+import org.waveprotocol.wave.model.conversation.ConversationBlip;
+import org.waveprotocol.wave.model.conversation.ConversationThread;
+import org.waveprotocol.wave.model.conversation.ConversationView;
+import org.waveprotocol.wave.model.wave.ParticipantId;
+
+
+/**
+ * A wave renderer can render any part of a wave. A rendering of a wave part
+ * includes renderings of its sub-parts.
+ * <p>
+ * Note that a wave renderer can be constructed from modular definitions of how
+ * to render each component of a wave, by injecting the modular definitions (
+ * {@link RenderingRules}) into a {@link ReductionBasedRenderer}.
+ */
+public interface WaveRenderer<T> {
+
+  /** Renders a wave.  Returns null if there are no conversations to render. */
+  T renderWave(ConversationView wave);
+
+  /** Renders a conversation. */
+  T renderConversation(Conversation conversation);
+
+  /** Renders an anchor for a thread. */
+  T renderThread(ConversationThread thread);
+
+  /** Renders a blip. */
+  T renderBlip(ConversationBlip blip);
+
+  /** Renders a participant. */
+  T renderParticipant(Conversation conversation, ParticipantId participant);
+
+  /** Renders a tag. */
+  T renderTag(Conversation conversation, String tag);  
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<!--
+  Copyright Google 2010
+  Author: hearnden@google.com (David Hearnden)
+-->
+<head>
+<title>{2}</title>
+<link rel="stylesheet" type="text/css" href="/static/css/Blip.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/Collapsible.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/Conversation.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/FocusFrame.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/Participants.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/RootThread.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+{3}
+</head>
+<body>
+<div class="info" style="margin-bottom: 10px;" >User id:&nbsp<b>{0}</b> &nbsp; <a href="http://pdfcrowd.com/url_to_pdf/?pdf_name={2}">Convert this page to a PDF</a> 
+    <span style="text-align: right; margin-left: 50px;">&nbsp;<a href={4} target="_blank">Open in a new window</a></span>
+    <span style="text-align: right; margin-left: 50px;">&nbsp;<a href={5} target="_blank">Shared waves index</a></span>
+</div>
+  <div id='panel' style='height: 100%; width: 99%; margin: 0 0 100px 0;'>
+  {1}
+  </div></body></html>

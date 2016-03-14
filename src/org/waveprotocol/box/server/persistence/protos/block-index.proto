@@ -1,0 +1,52 @@
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// Block store structures.
+//
+// Author: akaplanov@gmail.com (Andrew Kaplanov)
+
+syntax = "proto2";
+
+import "org/waveprotocol/wave/federation/federation.protodevel";
+
+package protofileblockindex;
+
+option java_package = "org.waveprotocol.box.server.persistence.protos";
+option java_outer_classname = "ProtoBlockIndex";
+
+/**
+ * Индексы блоков для хранения в file store.
+ */
+message BlockIndex {
+
+  message FragmentRange {
+    required string blockId = 1;
+    required int64 sourceVersion = 2;
+    required int64 targetVersion = 3;
+  }
+
+  message SegmentRanges {
+    repeated bytes rawFragmentRanges = 1; // Serialized FragmentRange's.
+  }
+
+  required int32 formatVersion = 1;
+
+  required bool consistent = 2;
+
+  repeated string segmentId = 3;
+
+  repeated SegmentRanges segmentRanges = 4;
+
+  required federation.ProtocolHashedVersion lastModifiedVersion = 5;
+
+  required int64 lastModifiedTime = 6;
+}

@@ -1,0 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21.11.2014, 17:09:15
+    Author     : fwnd80@gmail.com (Nikolay Liber)
+*/
+
+.boldLabel {
+  font-family: Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.regularLabel {
+    font-family: Verdana, sans-serif;
+}
+
+.hotkey {
+    font-family: Verdana, sans-serif;
+    color: #bbb;
+}

@@ -1,0 +1,30 @@
+<!--
+  Template for UpdateIndicator.
+-->
+<ui:UiBinder
+    xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:w="urn:import:org.waveprotocol.wave.client.widget.common"
+    xmlns:gwt="urn:import:com.google.gwt.user.client.ui"
+>
+  <ui:with field='msg'
+         type='org.waveprotocol.box.webclient.widget.update.i18n.UpdateMessages' />
+
+  <ui:style type='org.waveprotocol.box.webclient.widget.update.UpdateIndicatorWidget.Style'>
+
+  .warning {
+    background-color: yellow;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    /* This padding is just aesthetic, to give some space for the rounded corners to show. */
+    padding: 2px 6px;
+  }
+
+  </ui:style>
+  <w:ImplPanel ui:field='self'>
+    <span class="{style.warning}">
+      <ui:text from="{msg.softwareIsUpdated}"/>. <ui:text from="{msg.please}"/>
+      <a href="#" ui:field='refresh'><ui:text from="{msg.refreshPage}"/></a>.
+    </span>
+  </w:ImplPanel>
+</ui:UiBinder>

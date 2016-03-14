@@ -1,0 +1,8 @@
+<module>
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="org.waveprotocol.box.webclient.widget.frame.Frame"/>
+  <inherits name="org.waveprotocol.wave.client.widget.toolbar.Toolbar"/>
+  <inherits name="org.waveprotocol.box.webclient.folder.FolderOperation"/>
+  <inherits name="org.waveprotocol.wave.common.regexp.RegExp"/>
+  <source path=""/>
+</module>

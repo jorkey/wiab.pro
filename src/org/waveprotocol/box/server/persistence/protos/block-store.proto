@@ -1,0 +1,161 @@
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// Block store structures.
+//
+// Author: akaplanov@gmail.com (Andrew Kaplanov)
+// Author: kisel2626@gmail.com (Kirill Kostyuchenko)
+
+syntax = "proto2";
+
+import "org/waveprotocol/wave/model/raw/raw.proto";
+
+package protoblockstore;
+
+option java_package = "org.waveprotocol.box.server.persistence.protos";
+option java_outer_classname = "ProtoBlockStore";
+
+/**
+ * Snapshot of segment.
+ */
+message SegmentSnapshotRecord {
+  /** Snapshot of segment identifiers. */
+  message IndexSnapshot {
+    /** Serialized RawIndexSnapshot. */
+    required string rawIndexSnapshot = 1;
+  }
+
+  /** Snapshot of participants. */
+  message ParticipantsSnapshot {
+    /** Serialized RawParticipantsSnapshot. */
+    required string rawParticipantsSnapshot = 1;
+  }
+
+  /** Snapshot of blip. */
+  message BlipSnapshot {
+    /** Serialized RawBlipSnapshot. */
+    required string rawBlipSnapshot = 1;
+    /** Rendered blip's HTML with metainfo to obtain snapshot. */
+    optional string renderedHtml = 2;
+  }
+
+  /** Snapshot of segment identifiers. */
+  optional IndexSnapshot indexSnapshot = 1;
+
+  /** Snapshot of participants. */
+  optional ParticipantsSnapshot participantsSnapshot = 2;
+
+  /** Snapshot of blip. */
+  optional BlipSnapshot blipSnapshot = 3;
+}
+
+/**
+ * Top marker.
+ */
+message TopMarkerRecord {
+  /** Offset of VersionInfo. */
+  optional uint32 versionInfoOffset = 1;
+
+  /** Offset of operation from previous version. */
+  optional uint32 fromPreviousVersionOperationOffset = 2;
+}
+
+/**
+ * Marker of backward far version.
+ */
+message FarBackwardMarkerRecord {
+  /** Distance to previous far version. */
+  required uint32 distanceToPreviousFarVersion = 1;
+
+  /** Offset of previous far marker. */
+  required uint32 previousFarMarkerOffset = 2;
+
+  /** Offset of aggregated operation from far previous version. */
+  optional uint32 fromPreviousFarVersionOperationOffset = 3;
+}
+
+/**
+ * Marker of forward far version.
+ */
+message FarForwardMarkerRecord {
+  /** Distance to next far version. */
+  required fixed32 distanceToNextFarVersion = 1;
+
+  /** Offset of next far marker. */
+  required fixed32 nextFarMarkerOffset = 2;
+}
+
+/**
+ * Marker of snashot.
+ */
+message SnapshotMarkerRecord {
+  /** Offset of SegmentSnapshotRecord. */
+  required uint32 snapshotOffset = 1;
+}
+
+/**
+ * Version informantion.
+ */
+message VersionInfoRecord {
+  /** Version. */
+  required uint64 version = 1;
+
+  /** Index of author of version. */
+  optional uint32 author = 2;
+
+  /** Timestamp of version. */
+  optional uint64 timestamp = 3;
+}
+
+/**
+ * Index of snapshots.
+ */
+message SnapshotsIndexRecord {
+  /** Versions of snapshots. */
+  repeated uint64 snapshotVersions = 1;
+
+  /** Offsets of markers with snapshots. */
+  repeated uint32 markerOffsets = 2;
+}
+
+/**
+ * Header of block.
+ */
+message BlockHeaderRecord {
+  /** Identifier of block. */
+  required string blockId = 1;
+
+  /** Identifiers of segments. */
+  repeated string segmentIds = 2;
+
+  /** Serialized markers. */
+  repeated bytes rawMarkers = 3;
+
+  /** Serialized SnapshotsIndexRecord's. */
+  repeated bytes rawSnapshotIndexes = 4;
+
+  /** Serialized last snapshots. */
+  repeated bytes rawLastSnapshots = 5;
+
+  /** Versions authors. */
+  repeated string authors = 6;
+
+  /** Map of first fragments. */
+  repeated bool firstFragments = 7;
+
+  /** Map of last fragments. */
+  repeated bool lastFragments = 8;
+
+  /** Last modified version. */
+  required uint64 lastModifiedVersion = 9;
+}
+

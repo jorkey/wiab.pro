@@ -1,0 +1,67 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Snapshot store structures.
+ */
+
+syntax = "proto2";
+
+import "org/waveprotocol/wave/federation/federation.protodevel";
+
+package protodeltastore;
+
+option java_package = "org.waveprotocol.box.server.persistence.protos";
+option java_outer_classname = "ProtoSnapshotStoreData";
+
+message ProtoWaveletSnapshot {
+  required WaveletSnapshot snapshot = 1;
+}
+
+/** A wavelet and associated metadata. */
+message WaveletSnapshot {
+  // Wavelet's id, URI path format.
+  required string waveletId = 1;
+  // Participants of this wavelet.
+  repeated string participantId = 2;
+  // Snapshots of all the documents in the wavelet.
+  repeated DocumentSnapshot document = 3;
+
+  //// Metadata ////
+  // Current version and modification timestamp of the wavelet.
+  required federation.ProtocolHashedVersion version = 4;
+  required int64 lastModifiedTime = 5;
+  // Participant and time of creation for the wavelet.
+  required string creator = 6;
+  required int64 creationTime = 7;
+}
+
+/** A document and associated metadata. */
+message DocumentSnapshot {
+  // Id of the document.
+  required string documentId = 1;
+  // Operation that transforms an empty document the document state.
+  required federation.ProtocolDocumentOperation documentOperation = 2;
+
+  //// Metadata ////
+  // Participant who submitted the first operation to the document.
+  required string author = 3;
+  // All participants who have submitted operations to the document.
+  repeated string contributor = 4;
+
+  // Wavelet version and timestamp when the document was last modified.
+  required int64 lastModifiedVersion = 5;
+  required int64 lastModifiedTime = 6;
+
+  optional int64 creationVersion = 7;
+  optional int64 creationTime = 8;
+}
